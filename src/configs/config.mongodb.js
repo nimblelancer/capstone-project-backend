@@ -1,27 +1,13 @@
-"use strict";
+import mongoose from 'mongoose';
 
-const dev = {
-  app: {
-    port: process.env.DEV_APP_PORT,
-  },
-  db: {
-    host: process.env.DEV_DB_HOST,
-    port: process.env.DEV_DB_PORT,
-    name: process.env.DEV_DB_NAME,
-  },
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    process.exit(1);
+  }
 };
 
-const pro = {
-  app: {
-    port: process.env.PRO_APP_PORT,
-  },
-  db: {
-    host: process.env.PRO_DB_HOST,
-    port: process.env.PRO_DB_PORT,
-    name: process.env.PRO_DB_NAME,
-  },
-};
-
-const config = { dev, pro };
-const env = process.env.NODE_ENV || "dev";
-module.exports = config[env];
+export default connectDB;

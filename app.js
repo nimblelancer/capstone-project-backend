@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const { default: helmet } = require("helmet");
 const compression = require("compression");
 const app = express();
-import connectDB from "./src/configs/config.mongodb";
+const connectDB = require("./src/configs/config.mongodb");
 
 // init middleware
 app.use(morgan("dev"));

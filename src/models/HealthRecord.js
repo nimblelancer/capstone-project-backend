@@ -29,18 +29,18 @@ const HealthRecordSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'BasicInfor',
   },
-  medicalHistoryId: {
+  medicalHistoryId: [{
     type: Schema.Types.ObjectId,
     ref: 'MedicalHistory',
-  },
-  appointmentId: {
+  }],
+  appointmentId: [{
     type: Schema.Types.ObjectId,
     ref: 'Appointment',
-  },
-  vaccineId: {
+  }],
+  diseaseId: [{
     type: Schema.Types.ObjectId,
-    ref: 'Vaccine',
-  },
+    ref: 'Disease',
+  }],
   bloodIndex: {
     type: String,
   },

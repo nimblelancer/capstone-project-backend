@@ -14,11 +14,11 @@ const DiseaseSchema = new Schema({
     default: 0,
     min: 0, // Enforce non-negative injection count
   },
-  vaccinationId: {
+  vaccinationId: [{
     type: Schema.Types.ObjectId,
     ref: 'Vaccination', // Replace with actual schema name
     required: true,
-  },
+  }],
 
   // Relationship with HealthRecord (assuming one-to-many)
   healthRecordId: {

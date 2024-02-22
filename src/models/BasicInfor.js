@@ -59,5 +59,9 @@ const BasicInforSchema = new Schema({
     default: false,
   },
 });
+BasicInforSchema.pre('save', function(next) {
+  this.updatedAt = Date.now();
+  next();
+});
 
 module.exports = mongoose.model('BasicInfor', BasicInforSchema);

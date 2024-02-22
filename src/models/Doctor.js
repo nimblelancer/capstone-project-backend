@@ -1,8 +1,9 @@
 JavaScript
 const mongoose = require('mongoose');
+const { required } = require('nodemon/lib/config');
 const Schema = mongoose.Schema;
 
-const AppointmentSchema = new Schema({
+const DoctorSchema = new Schema({
   // Basic appointment details
   name: {
     type: String,
@@ -22,8 +23,7 @@ const AppointmentSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['Pending', 'Confirmed', 'Completed', 'Cancelled'],
-    default: 'Pending',
+    required: true,
   },
 
   // Relationship with User (assuming one-to-many)
@@ -51,9 +51,9 @@ const AppointmentSchema = new Schema({
 });
 
 // Update timestamps on document modification
-AppointmentSchema.pre('save', function(next) {
+DoctorSchema.pre('save', function(next) {
   this.updatedAt = Date.now();
   next();
 });
 
-module.exports = mongoose.model('Appointment', AppointmentSchema);
+module.exports = mongoose.model('Doctor', DoctorSchema);

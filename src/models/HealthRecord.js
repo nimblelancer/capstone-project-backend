@@ -25,9 +25,9 @@ const HealthRecordSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  basicInforId: {
+  basicInfoId: {
     type: Schema.Types.ObjectId,
-    ref: 'BasicInfor',
+    ref: 'BasicInfo',
   },
   medicalHistoryId: [{
     type: Schema.Types.ObjectId,

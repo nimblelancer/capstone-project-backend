@@ -8,6 +8,7 @@ const connectDB = require("./src/configs/config.mongodb");
 const { required } = require("nodemon/lib/config");
 
 var diseaseRouter = require("./src/routes/diseaseRoute");
+var router = require("./src/routes/healthRecordRoute");
 
 // init middleware
 app.use(morgan("dev"));
@@ -18,6 +19,7 @@ app.use(compression());
 connectDB();
 // init routes
 app.use("/disease", diseaseRouter);
+app.use("/healthrecord", router);
 // handle errors
 
 module.exports = app;

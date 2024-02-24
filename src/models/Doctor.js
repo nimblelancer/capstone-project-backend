@@ -1,4 +1,4 @@
-JavaScript
+
 const mongoose = require('mongoose');
 const { required } = require('nodemon/lib/config');
 const Schema = mongoose.Schema;

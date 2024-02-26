@@ -7,8 +7,10 @@ const app = express();
 const connectDB = require("./src/configs/config.mongodb");
 
 //Import routes
-const basicInfoRouter = require("./src/routes/basicInfoRouter");
+const basicInfoRoute = require("./src/routes/BasicInfor");
 const initMedicalHistoryRoute = require("./src/routes/MedicalHistory");
+const initVaccinationRoute = require("./src/routes/Vaccination");
+const initAppointmentRoute = require("./src/routes/Appoinment");
 
 // init middleware
 app.use(morgan("dev"));
@@ -18,8 +20,10 @@ app.use(compression());
 // init db
 connectDB();
 // init routes
-app.use("/basic-info", basicInfoRouter);
+app.use("/basic-info", basicInfoRoute);
 initMedicalHistoryRoute(app);
+initVaccinationRoute(app);
+initAppointmentRoute(app);
 // handle errors
 
 module.exports = app;

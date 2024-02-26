@@ -34,7 +34,7 @@ const BasicInfoSchema = new Schema({
     // if appropriate
   },
   // Relationship with HealthRecord (assuming one-to-one)
-  healthRecordId: {
+  healthRecord: {
     type: Schema.Types.ObjectId,
     ref: 'HealthRecord',
     required: true,

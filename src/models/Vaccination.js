@@ -25,7 +25,7 @@ const VaccinationSchema = new Schema({
   },
 
   // Relationship with Disease (assuming one-to-many)
-  diseaseId: {
+  disease: {
     type: Schema.Types.ObjectId,
     ref: 'Disease', // Replace with actual schema name
     required: true,

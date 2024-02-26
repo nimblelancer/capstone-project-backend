@@ -27,7 +27,7 @@ const DoctorSchema = new Schema({
   },
 
   // Relationship with User (assuming one-to-many)
-  userId: {
+  user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,

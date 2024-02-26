@@ -18,7 +18,7 @@ const AppointmentSchema = new Schema({
   },
 
   // Relationship with HealthRecord (assuming one-to-many)
-  healthRecordId: {
+  healthRecord: {
     type: Schema.Types.ObjectId,
     ref: 'HealthRecord',
     required: true,

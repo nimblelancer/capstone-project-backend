@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const MedicalHistorySchema = new Schema({
@@ -17,9 +17,9 @@ const MedicalHistorySchema = new Schema({
   },
 
   // Relationship with HealthRecord (assuming one-to-many)
-  healthRecordId: {
+  healthRecord: {
     type: Schema.Types.ObjectId,
-    ref: 'HealthRecord',
+    ref: "HealthRecord",
     required: true,
   },
 
@@ -28,7 +28,8 @@ const MedicalHistorySchema = new Schema({
     type: String,
     required: true,
   },
-  faculty: { // Assuming department or specialization
+  faculty: {
+    // Assuming department or specialization
     type: String,
     required: true,
   },
@@ -38,19 +39,21 @@ const MedicalHistorySchema = new Schema({
   },
 
   // Attachments (consider data security and storage implications)
-  ultrasoundScanImg: { // Adjust field type and validation based on storage method
+  ultrasoundScanImg: {
+    // Adjust field type and validation based on storage method
     type: String, // Or Buffer?
-    default: '',
+    default: "",
   },
-  diagnosticImg: { // Adjust field type and validation based on storage method
+  diagnosticImg: {
+    // Adjust field type and validation based on storage method
     type: String, // Or Buffer?
-    default: '',
+    default: "",
   },
 
   // Treatment details
   prescriptions: {
-    type: [String], // Array of medication names or description
-    default: [],
+    type: String, // Array of medication names or description
+    default: "",
   },
   totalMoney: {
     type: Number,
@@ -76,9 +79,9 @@ const MedicalHistorySchema = new Schema({
 });
 
 // Update timestamps on document modification
-MedicalHistorySchema.pre('save', function(next) {
+MedicalHistorySchema.pre("save", function (next) {
   this.updatedAt = Date.now();
   next();
 });
 
-module.exports = mongoose.model('MedicalHistory', MedicalHistorySchema);
+module.exports = mongoose.model("MedicalHistory", MedicalHistorySchema);

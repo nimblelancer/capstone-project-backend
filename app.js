@@ -7,7 +7,7 @@ const app = express();
 const connectDB = require("./src/configs/config.mongodb");
 
 //Import routes
-const basicInfoRoute = require("./src/routes/BasicInfor");
+const initBasicInfoRoute = require("./src/routes/BasicInfo");
 const initMedicalHistoryRoute = require("./src/routes/MedicalHistory");
 const initVaccinationRoute = require("./src/routes/Vaccination");
 const initAppointmentRoute = require("./src/routes/Appoinment");
@@ -25,7 +25,7 @@ app.use(compression());
 // init db
 connectDB();
 // init routes
-app.use("/basic-info", basicInfoRoute);
+initBasicInfoRoute(app);
 initMedicalHistoryRoute(app);
 initVaccinationRoute(app);
 initAppointmentRoute(app);

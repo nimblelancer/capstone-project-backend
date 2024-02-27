@@ -11,7 +11,12 @@ const basicInfoRoute = require("./src/routes/BasicInfor");
 const initMedicalHistoryRoute = require("./src/routes/MedicalHistory");
 const initVaccinationRoute = require("./src/routes/Vaccination");
 const initAppointmentRoute = require("./src/routes/Appoinment");
+<<<<<<< HEAD
 const initDiseaseRoute = require("./src/routes/Disease");
+=======
+const initDoctorRoute = require("./src/routes/Doctor");
+
+>>>>>>> 1256b7fe191a823cc38a92144505f4cd3f01d3b0
 // init middleware
 app.use(morgan("dev"));
 app.use(helmet());
@@ -24,7 +29,11 @@ app.use("/basic-info", basicInfoRoute);
 initMedicalHistoryRoute(app);
 initVaccinationRoute(app);
 initAppointmentRoute(app);
+<<<<<<< HEAD
 initDiseaseRoute(app);
+=======
+initDoctorRoute(app);
+>>>>>>> 1256b7fe191a823cc38a92144505f4cd3f01d3b0
 // handle errors
 
 module.exports = app;

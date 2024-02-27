@@ -3,6 +3,7 @@ module.exports = (app) => {
   
     var router = require("express").Router();
   
+    router.get("/healthRecord", diseaseController.findDiseaseByHealthRecord);
     router.get("/", diseaseController.findAllDiseases);
     router.get("/:id", diseaseController.findDiseaseById);
   

@@ -11,7 +11,7 @@ const basicInfoRoute = require("./src/routes/BasicInfor");
 const initMedicalHistoryRoute = require("./src/routes/MedicalHistory");
 const initVaccinationRoute = require("./src/routes/Vaccination");
 const initAppointmentRoute = require("./src/routes/Appoinment");
-
+const initDiseaseRoute = require("./src/routes/Disease");
 // init middleware
 app.use(morgan("dev"));
 app.use(helmet());
@@ -24,6 +24,7 @@ app.use("/basic-info", basicInfoRoute);
 initMedicalHistoryRoute(app);
 initVaccinationRoute(app);
 initAppointmentRoute(app);
+initDiseaseRoute(app);
 // handle errors
 
 module.exports = app;

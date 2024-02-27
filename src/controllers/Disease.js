@@ -1,21 +1,27 @@
 const Disease = require("../models/Disease");
 
 exports.createDisease = async (req, res) => {
-  const { name, totalOfInjection, vaccination,  symptoms } = req.body;
+  const { name, totalOfInjection, vaccination, healthRecord, symptoms } = req.body;
 
   const disease = new Disease({
     name,
     totalOfInjection,
     vaccination,
+    healthRecord,
     symptoms,
   });
 
-  try {
-    const savedDisease = await disease.save();
-    res.status(200).json(savedDisease);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+  disease
+  .save(disease)
+  .then((data) => {
+    res.status(200).json(data);
+  })
+  .catch((err) => {
+    res.status(500).json({
+      message:
+        err.message || "Some error occurred while creating the Disease.",
+    });
+  });
 };
 
 exports.updateDisease = async (req, res) => {
@@ -74,3 +80,21 @@ exports.findAllDiseases = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+exports.findDiseaseByHealthRecord = async (req, res) => {
+    HealthRecord.findById(req.params.id)
+      .then(
+        (data) => {
+          if (data != null) {
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "application/json");
+            res.json(data.diseases);
+          } else {
+            err = new Error("Disease " + req.params.id + " not found");
+            err.status = 404;
+            return next(err);
+          }
+        },
+        (err) => next(err)
+      )
+      .catch((err) => next(err));
+  };

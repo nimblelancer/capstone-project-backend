@@ -1,6 +1,4 @@
-JavaScript
-const mongoose = require('mongoose');
-const { required } = require('nodemon/lib/config');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const DoctorSchema = new Schema({
@@ -27,9 +25,9 @@ const DoctorSchema = new Schema({
   },
 
   // Relationship with User (assuming one-to-many)
-  userId: {
+  user: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true,
   },
 
@@ -51,9 +49,9 @@ const DoctorSchema = new Schema({
 });
 
 // Update timestamps on document modification
-DoctorSchema.pre('save', function(next) {
+DoctorSchema.pre("save", function (next) {
   this.updatedAt = Date.now();
   next();
 });
 
-module.exports = mongoose.model('Doctor', DoctorSchema);
+module.exports = mongoose.model("Doctor", DoctorSchema);

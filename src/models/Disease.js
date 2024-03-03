@@ -1,5 +1,4 @@
-JavaScript
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const DiseaseSchema = new Schema({
@@ -14,16 +13,18 @@ const DiseaseSchema = new Schema({
     default: 0,
     min: 0, // Enforce non-negative injection count
   },
-  vaccinationId: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Vaccination', // Replace with actual schema name
-    required: true,
-  }],
+  vaccination: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Vaccination", // Replace with actual schema name
+      required: true,
+    },
+  ],
 
   // Relationship with HealthRecord (assuming one-to-many)
-  healthRecordId: {
+  healthRecord: {
     type: Schema.Types.ObjectId,
-    ref: 'HealthRecord', // Replace with actual schema name
+    ref: "HealthRecord", // Replace with actual schema name
     required: true,
   },
 
@@ -32,12 +33,12 @@ const DiseaseSchema = new Schema({
     type: [String], // Array of symptom descriptions
     default: [],
   },
-//   treatment: {
-//     type: String, // Brief description of treatment
-//   },
-//   recommendations: {
-//     type: String, // Recommendations for prevention or management
-//   },
+  //   treatment: {
+  //     type: String, // Brief description of treatment
+  //   },
+  //   recommendations: {
+  //     type: String, // Recommendations for prevention or management
+  //   },
   // Timestamps
   createdAt: {
     type: Date,
@@ -56,9 +57,9 @@ const DiseaseSchema = new Schema({
 });
 
 // Update timestamps on document modification
-DiseaseSchema.pre('save', function(next) {
+DiseaseSchema.pre("save", function (next) {
   this.updatedAt = Date.now();
   next();
 });
 
-module.exports = mongoose.model('Disease', DiseaseSchema);
+module.exports = mongoose.model("Disease", DiseaseSchema);

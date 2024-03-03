@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const HealthRecordSchema = new Schema({
@@ -13,34 +13,41 @@ const HealthRecordSchema = new Schema({
   },
   gender: {
     type: String,
-    enum: ['M', 'F', 'Other'], // Or your desired gender categories
+    enum: ["M", "F", "Other"], // Or your desired gender categories
   },
-  relationshipType: { // Assuming 'type_relative' clarification
+  relationshipType: {
+    // Assuming 'type_relative' clarification
     type: String,
     required: true,
   },
   // Reference to User model (assuming one-to-one relationship)
-  userId: {
+  user: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true,
   },
-  basicInforId: {
+  basicInfo: [{
     type: Schema.Types.ObjectId,
-    ref: 'BasicInfor',
-  },
-  medicalHistoryId: [{
-    type: Schema.Types.ObjectId,
-    ref: 'MedicalHistory',
+    ref: "BasicInfo",
   }],
-  appointmentId: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Appointment',
-  }],
-  diseaseId: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Disease',
-  }],
+  medicalHistories: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "MedicalHistory",
+    },
+  ],
+  appointments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Appointment",
+    },
+  ],
+  diseases: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Disease",
+    },
+  ],
   bloodIndex: {
     type: String,
   },
@@ -58,4 +65,4 @@ const HealthRecordSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('HealthRecord', HealthRecordSchema);
+module.exports = mongoose.model("HealthRecord", HealthRecordSchema);

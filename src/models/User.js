@@ -31,7 +31,7 @@ var User = new Schema({
     default: null,
   }],
   roleId: {
-    type: Schema.Types.ObjectId,
+    type: Number,
     ref: 'Role', // Assuming Role is another model
     default: null,
   },

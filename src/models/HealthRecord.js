@@ -13,7 +13,8 @@ const HealthRecordSchema = new Schema({
   },
   gender: {
     type: String,
-    enum: ["M", "F", "Other"], // Or your desired gender categories
+    // enum: ["M", "F", "Other"], // Or your desired gender categories
+    required: true,
   },
   relationshipType: {
     // Assuming 'type_relative' clarification
@@ -21,48 +22,49 @@ const HealthRecordSchema = new Schema({
     required: true,
   },
   // Reference to User model (assuming one-to-one relationship)
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  basicInfo: [{
-    type: Schema.Types.ObjectId,
-    ref: "BasicInfo",
-  }],
-  medicalHistories: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "MedicalHistory",
-    },
-  ],
-  appointments: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Appointment",
-    },
-  ],
-  diseases: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Disease",
-    },
-  ],
-  bloodIndex: {
-    type: String,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
-  isDeleted: {
-    type: Boolean,
-    default: false,
-  },
+  // user: {
+  //   // type: Schema.Types.ObjectId,
+  //   type: String,
+  //   ref: "User",
+  //   required: true,
+  // },
+  // basicInfo: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: "BasicInfo",
+  // }],
+  // medicalHistories: [
+  //  {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "MedicalHistory",
+  //   },
+  // ],
+  // appointments: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Appointment",
+  //   },
+  // ],
+  // diseases: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Disease",
+  //   },
+  // ],
+  // bloodIndex: {
+  //   type: String,
+  // },
+  // createdAt: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
+  // updatedAt: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
+  // isDeleted: {
+  //   type: Boolean,
+  //   default: false,
+  // },
 });
 
 module.exports = mongoose.model("HealthRecord", HealthRecordSchema);

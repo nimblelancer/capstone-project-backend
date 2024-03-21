@@ -25,7 +25,7 @@ var User = new Schema({
     type: Boolean,
     default: false,
   },
-  healthRecord: [{
+  healthRecordId: [{
     type: Schema.Types.ObjectId,
     ref: 'HealthRecord', // Assuming HealthRecord is another model
     default: null,
